@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New year baby❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            color: white;
+            overflow-x: hidden;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        /* Video at top of screen */
+        .video-hero {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1s ease-out 0.3s forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Video container with glass frame */
+        .video-wrapper {
+            position: relative;
+            width: 92%;
+            max-width: 1200px;
+            height: 90%;
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: scaleIn 1s ease-out 0.6s forwards;
+        }
+        
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Glass frame around video only */
+        .glass-frame {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            border-radius: 28px;
+            z-index: -1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 0 40px rgba(255, 126, 230, 0.15),
+                0 0 80px rgba(0, 0, 0, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.03);
+            opacity: 0;
+            animation: frameGlow 1s ease-out 1s forwards;
+        }
+        
+        @keyframes frameGlow {
+            to { opacity: 1; }
+        }
+        
+        /* Inner decorative border */
+        .frame-border {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 26px;
+            pointer-events: none;
+        }
+        
+        /* Corner accents */
+        .corner-accent {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 2px solid rgba(255, 126, 230, 0.4);
+            border-radius: 8px;
+            z-index: 2;
+            opacity: 0;
+            animation: cornerFade 0.8s ease-out 1.2s forwards;
+        }
+        
+        @keyframes cornerFade {
+            to { opacity: 1; }
+        }
+        
+        .corner-tl {
+            top: -5px;
+            left: -5px;
+            border-right: none;
+            border-bottom: none;
+            border-top-left-radius: 10px;
+        }
+        
+        .corner-tr {
+            top: -5px;
+            right: -5px;
+            border-left: none;
+            border-bottom: none;
+            border-top-right-radius: 10px;
+        }
+        
+        .corner-bl {
+            bottom: -5px;
+            left: -5px;
+            border-right: none;
+            border-top: none;
+            border-bottom-left-radius: 10px;
+        }
+        
+        .corner-br {
+            bottom: -5px;
+            right: -5px;
+            border-left: none;
+            border-top: none;
+            border-bottom-right-radius: 10px;
+        }
+        
+        #hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            filter: brightness(0.95);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+            transition: filter 0.5s ease;
+        }
+        
+        #hero-video:hover {
+            filter: brightness(1.05);
+        }
+        
+        /* Video overlay for text only (not glassy) */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 20px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        /* Happy New Year message */
+        .new-year-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #ffcc00;
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+            letter-spacing: 1.5px;
+            animation: newYearFloat 8s ease-in-out infinite;
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            margin-top: 15px;
+            pointer-events: auto;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: 
+                textSlideDown 0.8s ease-out 1.4s forwards,
+                newYearFloat 8s ease-in-out 2.2s infinite;
+        }
+        
+        @keyframes textSlideDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes newYearFloat {
+            0%, 100% { 
+                transform: translateY(0) scale(1); 
+                color: #ffcc00;
+                text-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+            }
+            33% { 
+                transform: translateY(-6px) scale(1.04); 
+                color: #ff7ee6;
+                text-shadow: 0 0 25px rgba(255, 126, 230, 0.9);
+            }
+            66% { 
+                transform: translateY(4px) scale(1.02); 
+                color: #00ccff;
+                text-shadow: 0 0 25px rgba(0, 204, 255, 0.8);
+            }
+        }
+        
+        /* Vanilla text at bottom of video */
+        .vanilla-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            text-shadow: 
+                0 0 20px rgba(255, 126, 230, 0.8),
+                0 0 40px rgba(255, 126, 230, 0.4);
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            animation: vanillaGlow 4s ease-in-out infinite alternate;
+            pointer-events: auto;
+            opacity: 0;
+            animation: 
+                fadeInText 0.8s ease-out 1.6s forwards,
+                vanillaGlow 4s ease-in-out 2.4s infinite alternate;
+        }
+        
+        @keyframes fadeInText {
+            to { opacity: 1; }
+        }
+        
+        @keyframes vanillaGlow {
+            from { 
+                opacity: 0.9;
+                text-shadow: 
+                    0 0 15px rgba(255, 126, 230, 0.8),
+                    0 0 30px rgba(255, 126, 230, 0.4);
+            }
+            to { 
+                opacity: 1;
+                text-shadow: 
+                    0 0 25px rgba(255, 255, 255, 0.95),
+                    0 0 50px rgba(255, 126, 230, 0.6),
+                    0 0 70px rgba(255, 126, 230, 0.4);
+            }
+        }
+        
+        /* Video controls container */
+        .video-controls-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+            opacity: 0;
+            animation: fadeInControls 0.8s ease-out 1.8s forwards;
+        }
+        
+        @keyframes fadeInControls {
+            to { opacity: 1; }
+        }
+        
+        /* Speaker toggle button */
+        .speaker-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            backdrop-filter: blur(10px);
+            pointer-events: auto;
+        }
+        
+        .speaker-btn:hover {
+            background: rgba(255, 126, 230, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 126, 230, 0.4);
+        }
+        
+        .speaker-btn.muted {
+            background: rgba(255, 100, 100, 0.2);
+            border-color: rgba(255, 100, 100, 0.3);
+        }
+        
+        /* Main content - reduced padding from video */
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 20px 20px;
+            background: #0a0a0a;
+            margin-top: -30px;
+            opacity: 0;
+            animation: fadeInContent 1s ease-out 2s forwards;
+        }
+        
+        @keyframes fadeInContent {
+            to { opacity: 1; }
+        }
+        
+        /* Glassmorphism message - reduced margin */
+        .message-container {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px 45px;
+            max-width: 900px;
+            width: 95%;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+            animation: float 10s ease-in-out infinite 2.5s;
+            position: relative;
+            overflow: hidden;
+            transform: translateY(30px);
+            opacity: 0;
+            animation: 
+                messageAppear 1s ease-out 2.2s forwards,
+                float 10s ease-in-out 3.2s infinite;
+        }
+        
+        @keyframes messageAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Message frame */
+        .message-frame {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 23px;
+            pointer-events: none;
+        }
+        
+        .message-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: #ff7ee6;
+            text-shadow: 0 0 20px rgba(255, 126, 230, 0.8);
+            letter-spacing: 1.5px;
+            text-align: center;
+            line-height: 1.2;
+        }
+        
+        .message-body {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .message-highlight {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 1.4rem;
+            display: block;
+            margin: 20px 0;
+            padding: 12px 25px;
+            border-radius: 12px;
+            background: rgba(255, 204, 0, 0.08);
+            border-left: 4px solid #ffcc00;
+            text-align: center;
+        }
+        
+        .love-message {
+            color: #ff3366;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 25px 0;
+            padding: 20px;
+            text-align: center;
+            background: rgba(255, 51, 102, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 51, 102, 0.25);
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .heart {
+            color: #ff3366;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+            margin: 0 5px;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        
+        /* Video controls */
+        .video-controls {
+            margin-top: 25px;
+            text-align: center;
+        }
+        
+        .control-btn {
+            background: rgba(255, 126, 230, 0.2);
+            border: 1px solid rgba(255, 126, 230, 0.3);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 10px 10px 0;
+            backdrop-filter: blur(5px);
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 126, 230, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(255, 126, 230, 0.25);
+        }
+        
+        /* Footer */
+        .footer {
+            width: 100%;
+            padding: 35px 20px;
+            text-align: center;
+            z-index: 10;
+            background: linear-gradient(to top, rgba(10, 10, 10, 1), rgba(40, 0, 30, 0.9));
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            margin-top: auto;
+            opacity: 0;
+            animation: fadeInFooter 1s ease-out 2.4s forwards;
+        }
+        
+        @keyframes fadeInFooter {
+            to { opacity: 1; }
+        }
+        
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .footer-text {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #ffccf9;
+            font-style: italic;
+        }
+        
+        .footer-signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #ff7ee6;
+            text-shadow: 0 0 15px rgba(255, 126, 230, 0.7);
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+        }
+        
+        .footer-hearts {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #ff3366;
+        }
+        
+        /* Confetti container */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        /* Rose decoration */
+        .rose {
+            color: #ff3366;
+            font-size: 2rem;
+            margin: 0 8px;
+            animation: spin 25s linear infinite;
+            display: inline-block;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Floating hearts */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: #ff3366;
+            font-size: 1.6rem;
+            opacity: 0.7;
+            animation: floatUp 20s linear infinite;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Loading progress indicator (hidden) */
+        .video-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(to right, #ff3366, #ff7ee6);
+            z-index: 4;
+            transition: width 0.3s ease;
+        }
+        
+        /* Volume indicator */
+        .volume-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .volume-indicator.show {
+            opacity: 1;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .video-hero {
+                height: 80vh;
+            }
+            
+            .video-wrapper {
+                width: 94%;
+                height: 88%;
+            }
+            
+            .new-year-text {
+                font-size: 2.2rem;
+            }
+            
+            .vanilla-text {
+                font-size: 3rem;
+            }
+            
+            .message-title {
+                font-size: 3rem;
+            }
+            
+            .message-container {
+                padding: 35px 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .video-hero {
+                height: 75vh;
+            }
+            
+            .video-wrapper {
+                width: 96%;
+                height: 85%;
+            }
+            
+            .glass-frame {
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+                border-radius: 25px;
+            }
+            
+            .new-year-text {
+                font-size: 1.9rem;
+                padding: 8px 20px;
+                margin-top: 10px;
+            }
+            
+            .vanilla-text {
+                font-size: 2.6rem;
+                margin-bottom: 25px;
+            }
+            
+            .video-controls-container {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .speaker-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .message-title {
+                font-size: 2.6rem;
+            }
+            
+            .message-body {
+                font-size: 1.1rem;
+            }
+            
+            .message-container {
+                padding: 30px 35px;
+                width: 96%;
+                margin: 15px 0;
+            }
+            
+            .love-message {
+                font-size: 1.3rem;
+                padding: 16px;
+            }
+            
+            .footer-signature {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-hero {
+                height: 70vh;
+            }
+            
+            .video-wrapper {
+                width: 98%;
+                height: 80%;
+                margin-top: 15px;
+            }
+            
+            .glass-frame {
+                top: -8px;
+                left: -8px;
+                right: -8px;
+                bottom: -8px;
+                border-radius: 22px;
+            }
+            
+            .corner-accent {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .new-year-text {
+                font-size: 1.7rem;
+                padding: 6px 18px;
+                margin-top: 8px;
+            }
+            
+            .vanilla-text {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+            
+            .video-controls-container {
+                bottom: 10px;
+                right: 10px;
+                gap: 8px;
+            }
+            
+            .speaker-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .message-title {
+                font-size: 2.2rem;
+            }
+            
+            .message-body {
+                font-size: 1rem;
+            }
+            
+            .message-container {
+                padding: 25px 30px;
+                width: 98%;
+                margin: 10px 0;
+            }
+            
+            .message-highlight {
+                font-size: 1.2rem;
+                padding: 10px 18px;
+            }
+            
+            .love-message {
+                font-size: 1.2rem;
+                padding: 14px;
+            }
+            
+            .control-btn {
+                padding: 10px 25px;
+                font-size: 1rem;
+                margin: 0 0 8px 0;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .footer-signature {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Video at top of screen -->
+    <section class="video-hero">
+        <div class="video-wrapper">
+            <!-- Hidden loading progress -->
+            <div class="video-progress" id="video-progress"></div>
+            
+            <!-- Volume indicator -->
+            <div class="volume-indicator" id="volume-indicator">Volume: 100%</div>
+            
+            <!-- Glass frame around video only -->
+            <div class="glass-frame">
+                <div class="frame-border"></div>
+                <!-- Corner accents -->
+                <div class="corner-accent corner-tl"></div>
+                <div class="corner-accent corner-tr"></div>
+                <div class="corner-accent corner-bl"></div>
+                <div class="corner-accent corner-br"></div>
+            </div>
+            
+            <!-- Video -->
+            <video id="hero-video" playsinline loop muted preload="auto">
+                <source src="https://files.catbox.moe/ygamaz.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            
+            <!-- Video overlay for text only -->
+            <div class="video-overlay">
+                <!-- Happy New Year message -->
+                <div class="new-year-text">Happy New Year Pretty! 🎉</div>
+                
+                <!-- Vanilla text -->
+                <div class="vanilla-text">Vanilla</div>
+            </div>
+            
+            <!-- Video controls with speaker toggle -->
+            <div class="video-controls-container">
+                <button class="speaker-btn" id="speaker-btn" title="Toggle sound">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Floating hearts -->
+    <div class="floating-hearts" id="floating-hearts"></div>
+    
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti-container"></div>
+    
+    <!-- Main Content - reduced padding from video -->
+    <main class="content">
+        <div class="message-container">
+            <!-- Message frame -->
+            <div class="message-frame"></div>
+            
+            <h1 class="message-title">For You, Gatwiri_leel🌹</h1>
+            
+            <div class="message-body">
+                <p>Hey baby🤭❤️, just wanted to say that I, truly value you in my life and find it a blessing to have you around.</p>
+                
+                <p>You bring so much light and laughter wherever you go, and I'm genuinely grateful for every moment we share.</p>
+                
+                <p class="message-highlight">And let's be real – you are truly beautiful, inside and out <span class="heart">♥</span></p>
+                
+                <p>So beautiful, in fact, that you made me completely miss 2025 <span class="heart">😂</span><span class="rose">🌹</span></p>
+                
+                <div class="love-message">
+                    I love you and I can't wait to create more beautiful memories together in 2026
+                    <div class="heart">♥</div>
+                </div>
+                
+                <p>Thanks for being you, for the smiles, and for all the wonderful memories. Here's to many more!</p>
+            </div>
+            
+            <!-- Video controls -->
+            <div class="video-controls">
+                <button class="control-btn" id="play-btn">
+                    <i class="fas fa-play"></i> Play Video
+                </button>
+                <button class="control-btn" id="pause-btn">
+                    <i class="fas fa-pause"></i> Pause Video
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-hearts">
+                <span class="heart">♥</span> <span class="heart">♥</span> <span class="heart">♥</span>
+            </div>
+            
+            <p class="footer-text">Made with all my heart for someone incredibly special</p>
+            
+            <h2 class="footer-signature">From Max to Gatwiri_leel</h2>
+            
+            <p class="footer-date">Every moment with you is a treasure <span class="rose">🌹</span></p>
+            
+            <div class="footer-hearts">
+                <span class="heart">♥</span> <span class="heart">♥</span> <span class="heart">♥</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get DOM elements
+        const video = document.getElementById('hero-video');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const speakerBtn = document.getElementById('speaker-btn');
+        const volumeIndicator = document.getElementById('volume-indicator');
+        const confettiContainer = document.getElementById('confetti-container');
+        const floatingHeartsContainer = document.getElementById('floating-hearts');
+        const videoProgress = document.getElementById('video-progress');
+        
+        // Video state
+        let isMuted = true;
+        let volumeLevel = 0.5; // Default volume when unmuted
+        
+        // Initialize video with muted state
+        video.muted = true;
+        video.volume = 0;
+        
+        // Handle video loading smoothly
+        let isVideoLoaded = false;
+        
+        video.addEventListener('loadeddata', () => {
+            isVideoLoaded = true;
+            // Smooth progress animation
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 2;
+                videoProgress.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(() => {
+                        videoProgress.style.opacity = '0';
+                        setTimeout(() => {
+                            videoProgress.style.display = 'none';
+                        }, 500);
+                    }, 300);
+                }
+            }, 10);
+        });
+        
+        video.addEventListener('error', () => {
+            // If video fails to load, hide progress bar immediately
+            videoProgress.style.display = 'none';
+            
+            // Try to play anyway with fallback message
+            setTimeout(() => {
+                video.load();
+                video.play().catch(e => console.log("Video play error:", e));
+            }, 1000);
+        });
+        
+        // Play video function
+        playBtn.addEventListener('click', () => {
+            video.play().then(() => {
+                video.playbackRate = 1.0;
+                createConfetti(15);
+            }).catch(e => {
+                console.log("Play error:", e);
+            });
+        });
+        
+        // Pause video function
+        pauseBtn.addEventListener('click', () => {
+            video.pause();
+            createConfetti(8);
+        });
+        
+        // Speaker toggle function
+        speakerBtn.addEventListener('click', () => {
+            if (isMuted) {
+                // Unmute
+                video.muted = false;
+                video.volume = volumeLevel;
+                speakerBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                speakerBtn.classList.remove('muted');
+                
+                // Show volume indicator
+                volumeIndicator.textContent = `Volume: ${Math.round(volumeLevel * 100)}%`;
+                volumeIndicator.classList.add('show');
+                setTimeout(() => {
+                    volumeIndicator.classList.remove('show');
+                }, 1500);
+                
+                isMuted = false;
+            } else {
+                // Mute
+                video.muted = true;
+                video.volume = 0;
+                speakerBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                speakerBtn.classList.add('muted');
+                
+                // Show muted indicator
+                volumeIndicator.textContent = 'Muted';
+                volumeIndicator.classList.add('show');
+                setTimeout(() => {
+                    volumeIndicator.classList.remove('show');
+                }, 1500);
+                
+                isMuted = true;
+            }
+            
+            createConfetti(5);
+        });
+        
+        // Try to autoplay video on page load with smooth experience
+        window.addEventListener('load', () => {
+            // Create initial effects with delays for smooth experience
+            setTimeout(() => createConfetti(20), 1000);
+            setTimeout(() => createConfetti(15), 1800);
+            
+            // Create floating hearts
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => createFloatingHearts(), i * 400);
+            }
+            
+            // Try to autoplay video after animations
+            setTimeout(() => {
+                video.play().then(() => {
+                    video.playbackRate = 1.0;
+                    console.log("Video playing at normal speed");
+                }).catch(e => {
+                    console.log("Autoplay failed:", e);
+                });
+            }, 1200);
+        });
+        
+        // Confetti creation function
+        function createConfetti(count) {
+            const colors = ['#ff3366', '#ff7ee6', '#ffcc00', '#00ccff', '#33ff99'];
+            
+            for (let i = 0; i < count; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '12px';
+                confetti.style.height = '12px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.opacity = '0.9';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confettiContainer.appendChild(confetti);
+                
+                // Animation
+                const animation = confetti.animate([
+                    { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate(${Math.random() * 100 - 50}px, 100vh) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2500 + 1500,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                // Remove confetti after animation completes
+                animation.onfinish = () => {
+                    confetti.remove();
+                };
+            }
+        }
+        
+        // Create floating hearts
+        function createFloatingHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = Math.random() > 0.5 ? '♥' : '💖';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 18 + 10) + 'px';
+            heart.style.animationDuration = (Math.random() * 12 + 18) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            floatingHeartsContainer.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, 30000);
+        }
+        
+        // Add some random confetti periodically
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                createConfetti(4);
+            }
+        }, 6000);
+        
+        // Add floating hearts periodically
+        setInterval(() => {
+            createFloatingHearts();
+        }, 2500);
+        
+        // Create confetti when clicking on texts
+        document.querySelector('.new-year-text').addEventListener('click', () => {
+            createConfetti(25);
+        });
+        
+        document.querySelector('.vanilla-text').addEventListener('click', () => {
+            createConfetti(20);
+        });
+        
+        // Create confetti when clicking on message container
+        document.querySelector('.message-container').addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON') {
+                createConfetti(12);
+            }
+        });
+        
+        // Click on video to play/pause
+        document.querySelector('#hero-video').addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            createConfetti(8);
+        });
+        
+        // Smooth volume adjustment on wheel over speaker button
+        speakerBtn.addEventListener('wheel', (e) => {
+            if (!isMuted) {
+                e.preventDefault();
+                const delta = e.deltaY > 0 ? -0.05 : 0.05;
+                volumeLevel = Math.max(0, Math.min(1, volumeLevel + delta));
+                video.volume = volumeLevel;
+                
+                // Show volume indicator
+                volumeIndicator.textContent = `Volume: ${Math.round(volumeLevel * 100)}%`;
+                volumeIndicator.classList.add('show');
+                
+                clearTimeout(volumeIndicator.timeout);
+                volumeIndicator.timeout = setTimeout(() => {
+                    volumeIndicator.classList.remove('show');
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>
