@@ -805,8 +805,8 @@
                 <div class="corner-accent corner-br"></div>
             </div>
             
-            <!-- Video -->
-            <video id="hero-video" playsinline loop muted preload="auto">
+            <!-- VIDEO FIXED: Added autoplay attribute back -->
+            <video id="hero-video" playsinline loop muted preload="auto" autoplay>
                 <source src="gatwiri.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
@@ -905,16 +905,14 @@
         // Video state
         let isMuted = true;
         let volumeLevel = 0.5; // Default volume when unmuted
+        let playbackMonitor = null;
         
         // Initialize video with muted state
         video.muted = true;
         video.volume = 0;
         
         // Handle video loading smoothly
-        let isVideoLoaded = false;
-        
         video.addEventListener('loadeddata', () => {
-            isVideoLoaded = true;
             // Smooth progress animation
             let progress = 0;
             const progressInterval = setInterval(() => {
@@ -932,6 +930,28 @@
                 }
             }, 10);
         });
+        
+        // FIX: Ensure video restarts when it ends (loop enforcement)
+        video.addEventListener('ended', () => {
+            console.log('Video ended, restarting...');
+            video.currentTime = 0;
+            video.play().catch(e => {
+                console.log('Failed to restart video:', e);
+            });
+        });
+        
+        // FIX: Monitor video playback status
+        function monitorPlayback() {
+            if (video.paused && !video.ended) {
+                console.log('Video stopped unexpectedly, restarting...');
+                video.play().catch(e => {
+                    console.log('Failed to restart:', e);
+                });
+            }
+        }
+        
+        // Start monitoring playback
+        playbackMonitor = setInterval(monitorPlayback, 2000);
         
         video.addEventListener('error', () => {
             // If video fails to load, hide progress bar immediately
@@ -1015,6 +1035,8 @@
                     console.log("Video playing at normal speed");
                 }).catch(e => {
                     console.log("Autoplay failed:", e);
+                    // Show play button hint if autoplay fails
+                    playBtn.style.animation = 'pulse 2s infinite';
                 });
             }, 1200);
         });
@@ -1126,6 +1148,13 @@
                 volumeIndicator.timeout = setTimeout(() => {
                     volumeIndicator.classList.remove('show');
                 }, 1500);
+            }
+        });
+        
+        // Clean up monitoring on page unload
+        window.addEventListener('beforeunload', () => {
+            if (playbackMonitor) {
+                clearInterval(playbackMonitor);
             }
         });
     </script>
